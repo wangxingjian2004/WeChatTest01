@@ -43,7 +43,9 @@ class Handle(object):
                 fromUser = recvMsg.ToUserName
                 content = recvMsg.Content
                 replyMsg = reply.TextMsg(toUser, fromUser, content)
-                return replyMsg.send()
+                textMsg = replyMsg.send()
+                print("Return to WeChat Msg is :", textMsg)
+                return textMsg
             else:
                 print("非文本信息，暂不处理")
                 return 'success'
