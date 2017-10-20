@@ -50,6 +50,7 @@ class Handle(object):
                 print("非文本信息，暂不处理")
                 return 'success'
         except Exception, Argment:
+            print("[ERROR]: except Exception!!!!:", Argment)
             return Argment
 
 
