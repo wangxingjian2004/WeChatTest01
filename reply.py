@@ -2,6 +2,7 @@
 # filename: reply.py
 
 import time
+from bus import Bus
 
 class Msg(object):
     def __init__(self):
@@ -18,6 +19,10 @@ class TextMsg(Msg):
         self.__dict['Content'] = content
 
     def send(self):
+        if '公交' in self.__dict['Content']:
+            self.__dict['Content'] = Bus().bus_timeline()
+        else:
+            self.__dict['Content'] = '亲，更多内容敬请期待!!!'
         XmlForm = """
         <xml>
         <ToUserName><![CDATA[{ToUserName}]]></ToUserName>

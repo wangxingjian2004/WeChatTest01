@@ -42,8 +42,7 @@ class Handle(object):
                 toUser = recvMsg.FromUserName
                 fromUser = recvMsg.ToUserName
                 if recvMsg.MsgType == 'text':
-                    content = "亲，我还在幼儿园小二班，只能学说话哟\n" + recvMsg.Content
-                    replyMsg = reply.TextMsg(toUser, fromUser, content)
+                    replyMsg = reply.TextMsg(toUser, fromUser, recvMsg.Content)
                     textMsg = replyMsg.send()
                     print("Return to WeChat Msg is :", textMsg)
                     return textMsg
@@ -54,9 +53,15 @@ class Handle(object):
                     return imageMsg
                 else:
                     return reply.Msg().send()
-            else:
-                print("非文本信息，暂不处理")
-                return reply.Msg().send()
+
+            if isinstance(recvMsg, receive.EventMsg):
+                if recvMsg.Event == 'CLICK':
+                    if recvMsg.EventKey == 'mpGuide':
+                        content = u'编写中，尚未完成'.encode('utf-8')
+                        replyMsg = reply.TextMsg(toUser, fromUser, content)
+                        return replyMsg.send()
+            print("暂不处理......")
+            return reply.Msg().send()
         except Exception, Argment:
             print("[ERROR]: except Exception!!!!:", Argment)
             return Argment
