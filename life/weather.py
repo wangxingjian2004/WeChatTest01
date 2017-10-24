@@ -25,7 +25,7 @@ class Weather(object):
             'language' : WEATHER_DEFAULT_LANGUAGE,
             'unit' : WEATHER_DEFAULT_UNIT
         }, timeout=1)
-        return result.text.encode('utf-8')
+        return result.text
 
 if __name__ == '__main__':
     weather = Weather(u'天气聊城')
