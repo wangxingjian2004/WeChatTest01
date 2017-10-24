@@ -51,7 +51,7 @@ class Weather(object):
                 high = day['high']
                 wind_scale = day['wind_scale']
                 wind_direction = day['wind_direction']
-                formatStr += (date + ':' + text_day + '~' + text_night + ' \t' + wind_direction + u'风' + wind_scale + u'级' + '\n')
+                formatStr += (date + ':' + text_day + '~' + text_night + ' \t' + low + '~' + high + u'℃ \t'+ wind_direction + u'风' + wind_scale + u'级' + '\n')
 
             formatStr += '\n' + u'当地' + lastUpdateTime + u'更新'
 
