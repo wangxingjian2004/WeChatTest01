@@ -13,7 +13,6 @@ class Weather(object):
         excel = Excel(CITIES_EXCEL)
         cities = excel.get_data_by_name(name=u'中国地级市', row_start=1, col_start=1, row_end=9999, col_end=1)
         for city in cities:
-            print(city)
             if city[0] in self.__locationStr:
                 self.__location = city
                 break
@@ -26,7 +25,7 @@ class Weather(object):
             'language' : WEATHER_DEFAULT_LANGUAGE,
             'unit' : WEATHER_DEFAULT_UNIT
         }, timeout=1)
-        return result.text
+        return result.text.encode('utf-8')
 
 if __name__ == '__main__':
     weather = Weather(u'天气聊城')
