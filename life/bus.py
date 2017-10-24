@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# filename: main.py
+# filename: bus.py
 
 class Bus(object):
     def bus_timeline(self):
