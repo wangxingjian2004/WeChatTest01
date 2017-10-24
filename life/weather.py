@@ -55,14 +55,14 @@ class Weather(object):
 
             formatStr += '\n' + u'当地' + lastUpdateTime + u'更新'
 
-            return formatStr
+            return formatStr.encode('utf-8')
 
 
 
 if __name__ == '__main__':
     weather = Weather(u'天气聊城')
     print(weather.fetchWeather())
-    weather.format()
+    print(weather.format())
 
 
 
