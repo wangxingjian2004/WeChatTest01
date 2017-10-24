@@ -25,7 +25,9 @@ class TextMsg(Msg):
         if '公交' in self.__dict['Content']:
             self.__dict['Content'] = Bus().bus_timeline()
         elif '天气' in self.__dict['Content']:
-            self.__dict['Content'] = Weather(unicode(self.__dict['Content'], 'utf-8')).fetchWeather()
+            weather = Weather(unicode(self.__dict['Content'], 'utf-8'))
+            weather.fetchWeather()
+            self.__dict['Content'] = weather.format()
         else:
             self.__dict['Content'] = '亲，更多内容敬请期待!!!'
         XmlForm = """
